@@ -1,8 +1,16 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C, HW 8, #2
+% Compound Double Pendulum, Finite Element Method/Discrete Galerkin 0, 1 
+% Methods
 %
+% DESCRIPTION: Solves the compound double pendulum problem using either
+% a linear governing system (for angles small enough) or a nonlinear 
+% governing system of differential equations (for larger angles). The
+% results are computed using the discrete Galerkin (0) or (1) method.
+% An animation is generated of the motion of the pendulums along with the
+% computed energy compared with the theoretical constant conserved energy,
+% along with the angular positions and velocities wrt t.
 %
 %==========================================================================
 
@@ -13,7 +21,7 @@ clc; close all; clearvars;
 
 
 L = 10;                                  % Length [m]
-H = 6;                                  % Height [m]
+H = 6;                                   % Height [m]
 theta = 17;                              % Tension of the membrane [kN/m]
 
 h = 0.5;                                  % Node distance [m]
