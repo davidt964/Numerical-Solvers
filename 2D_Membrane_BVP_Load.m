@@ -1,16 +1,22 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% Compound Double Pendulum, Finite Element Method/Discrete Galerkin 0, 1 
-% Methods
+% 2D Membrane Boundary Value Problem with enforced Dirichlet/essential
+% boundary condition with a given load f(x) and linear deflection 
+% function u_bar(x).
 %
-% DESCRIPTION: Solves the compound double pendulum problem using either
-% a linear governing system (for angles small enough) or a nonlinear 
-% governing system of differential equations (for larger angles). The
-% results are computed using the discrete Galerkin (0) or (1) method.
-% An animation is generated of the motion of the pendulums along with the
-% computed energy compared with the theoretical constant conserved energy,
-% along with the angular positions and velocities wrt t.
+% DESCRIPTION: Solves the 2D membrane BVP such that a PDE of the form 
+% -Theta * Delta u(x) = f(x) within a rectangular boundary Omega. The
+% Dirichlet/essential boundary condition u(x) = u_bar(x) on Gamma.
+% Similarly, a constant tension Theta is assigned to the membrane which is
+% a material parameter and f(x) is the vertical load on the membrane and
+% u_bar(x) is the given linear deflection function on the boundary Gamma.
+% The point collocation method using radial basis functions is employed 
+% and n_n collocation points/nodes are used in Omega and on Gamma. We
+% seek to find the solution that -Theta * Delta u_h(x_i) = f(x_i) in Omega
+% and u_h(x_i) = u_bar(x_i) on Gamma. Visualizations of the contour plot of
+% u_h(x) with the nodes x_i along with a surface plot of u_h(x) and the 
+% nodes x_i.
 %
 %==========================================================================
 
