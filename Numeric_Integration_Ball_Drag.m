@@ -1,7 +1,9 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C, HW 6, PROBLEM 2  
+% Performs numeric integration using 1 of 5 implemented methods (Forward
+% Euler, Backward Euler, Trapezoidal Method, Heun's Method, and 4th-order
+% Runge-Kutta method) on a ball descending in a fluid with drag and gravity.
 %
 %==========================================================================
 
@@ -18,7 +20,7 @@ g = 9.81;           %gravitational acceleration [m/s^2]
 
 % Stopping Criterion
 EPS = 10^(-12);     %tolerance
-IT_MAX = 1000;       %max iterations
+IT_MAX = 1000;      %max iterations
 
 rho_rel = 0.9;      %relative density (rho_ball/rho_water < 1)
 
