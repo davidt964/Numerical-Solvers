@@ -1,7 +1,18 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C Final Exam
+% 1st order, nonlinear IVP with numerical integration with trapezoidal
+% method and integration error estimates that enable higher-order numerical
+% integration schemes
+%
+% DESCRIPTION: The solution to the abstract 1st order IVP 
+% y'(x) = (1 + x) / (1 + y(x)) in a given domain and IVP is sought with a
+% given true solution. The trapezoidal rule is applied and a corrective 
+% method is employed by adding the asymptotic error estimate to the
+% integration estimate I_h(f). The first derivative of the integrand is 
+% obtained. Due to the implicit nature of this new method, a rootfinding
+% problem is written and solved using Newton's method. Heun's method is
+% used to obtain an accurate initial guess.
 %
 %==========================================================================
 
