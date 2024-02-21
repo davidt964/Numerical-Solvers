@@ -1,7 +1,7 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C, HW 7, TRAPEZOIDAL METHOD 
+% TRAPEZOIDAL METHOD 
 %
 % DESCRIPTION: Performs the trapezoidal method on the double pendulum
 % system of differential equations. Plots the approximate angular 
@@ -25,7 +25,7 @@ k = 30;                         %spring constant of rod in [N/m] and bt [20,50] 
 b = 15;                         %terminating time in [s] and >= 10 [s]
 g = 9.81;                       %gravitational constant of Earth in [m/s^2]
 
-h = 0.005;                       %time step in [s]
+h = 0.005;                      %time step in [s]
 t = 0:h:b;                      %time array in [s]
 
 EPS = 10^(-12);                 %tolerance value
