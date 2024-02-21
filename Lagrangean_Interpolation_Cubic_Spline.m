@@ -1,8 +1,15 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C MIDTERM TAKE HOME PORTION
-% DATE: NOVEMBER 06, 2023
+% Cubic Spline, Lagrangean quadratic interpolation, modified Thomas algorithm
+%
+% DESCRIPTION: Obtains the Lagrangean quadratic interpolants for an arbitrary
+% subinterval [x_i, x_i+2]. The associated q_i(x) functions are printed from
+% the yPlot function and the first derivative q_i'(x) is obtained and defined
+% which are used in xEval. Similarly, a 3 x 3 tridiagonal system AM = f is
+% solved using a modified Thomas algorithm with clamped boundary conditions.
+% The cubic spline is also implemented and evaluated at the midpoint of the
+% subinterval [x_i, x_i+1].
 %
 %==========================================================================
 
