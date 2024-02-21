@@ -1,7 +1,8 @@
 %==========================================================================
 % AUTHOR: David L. Tran
 %
-% MAE 182C, HW 5, PROBLEM 4 
+% Newton's method for 1 or 2 nonlinear equations.
+%
 % DESCRIPTION: Performs Newton's method iteratively on either 1 or 2
 % nonlinear equations that are to be specified by the user. The program
 % continues to iterate until n reaches IT_MAX or the 2-norm of the residual
@@ -40,45 +41,67 @@ J_n = [];                 %Jacobian array
 
 %% Iterative Procedure
 %enter the loop; norm_2 is overwritten anyway in the loop.
-norm_2 = 1;
+
+if DIM == 1
+    %Calculate residual
+    r_n = calcResidual(x_n(n), DIM);
+    
+    %Calculate Jacobian
+    J_n = calcJacobian(x_n(n), DIM);
+
+    %Calculate the 2-norm of the residual
+    norm_2 = sqrt(r_n^2);
+elseif DIM == 2
+    %Calculate residual
+    r_n = calcResidual([x_n(n), y_n(n)], DIM);
+    
+    %Calculate Jacobian
+    J_n = calcJacobian([x_n(n), y_n(n)], DIM);
+    
+    %Calculate the 2-norm of the residual
+    norm_2 = sqrt(r_n(1)^2 + r_n(2)^2);
+end
+
 while norm_2 >= epsilon && n < IT_MAX
     if DIM == 1
-        %Calculate residual
-        r_n(n) = calcResidual(x_n(n), DIM);
-    
-        %Calculate Jacobian
-        J_n(n) = calcJacobian(x_n(n), DIM);
-        
         %Obtain Delta x_n
         Delta_xn(n) = J_n(n)\r_n(n);
     
         %Update x_n
         x_n(n+1) = x_n(n) + Delta_xn(n);
-        
-        %Calculate the 2-norm of the residual
-        norm_2 = sqrt(r_n(n)^2);
-    
+
         %Increment counter
         n = n + 1;
+        
+        %Calculate residual
+        r_n = calcResidual(x_n(n), DIM);
+        
+        %Calculate Jacobian
+        J_n(n) = calcJacobian(x_n(n), DIM);
+
+        %Calculate the 2-norm of the residual
+        norm_2 = sqrt(r_n^2);
+    
     elseif DIM == 2
+        %Obtain Delta x_n
+        Delta_xn = J_n\r_n;
+
+        %Update x_n
+        x_n(n+1) = x_n(n) + Delta_xn(1);
+        y_n(n+1) = y_n(n) + Delta_xn(2);
+
+        %Increment counter
+        n = n + 1;
+        
         %Calculate residual
         r_n = calcResidual([x_n(n), y_n(n)], DIM);
     
         %Calculate Jacobian
         J_n = calcJacobian([x_n(n), y_n(n)], DIM);
-        
-        %Obtain Delta x_n
-        Delta_xn = J_n\r_n;
-    
-        %Update x_n
-        x_n(n+1) = x_n(n) + Delta_xn(1);
-        y_n(n+1) = y_n(n) + Delta_xn(2);
-        
+
         %Calculate the 2-norm of the residual
         norm_2 = sqrt(r_n(1)^2 + r_n(2)^2);
     
-        %Increment counter
-        n = n + 1;
     end
 
 end
